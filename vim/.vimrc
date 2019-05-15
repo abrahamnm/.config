@@ -34,6 +34,9 @@ Plug 'airblade/vim-gitgutter'
 " Git wrapper
 Plug 'tpope/vim-fugitive'
 
+" Use ctrl p for fuzzy finder
+Plug 'kien/ctrlp.vim'
+
 " Vim material monokai theme
 Plug 'https://github.com/AwkwardKore/vim-material-monokai.git'
 
@@ -67,6 +70,9 @@ set number
 " Display line on current line
 set cursorline
 
+" Change Titles
+set title 
+
 " =========================================================
 "                       NERDTREE
 " =========================================================
@@ -96,6 +102,32 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Display 'NERDTree' on NERDTree status line instead of root path
 let g:NERDTreeStatusline='NERDTree'
+
+" =========================================================
+"                   CTRLP FUZZY FINDER
+" =========================================================
+
+" Disable caching
+let g:ctrlp_use_caching = 0
+
+" Use silver searcher
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g "" --hidden $1'
+endif
+
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|src-cordova|target|dist)|(\.(swp|ico|git|svn))$' 
+
+" Ignore spaces
+let g:ctrlp_abbrev = {
+  \ 'abbrevs': [
+    \ {
+      \ 'pattern': ' ',
+      \ 'expanded': '',
+      \ 'mode': 'fprz',
+    \ },
+  \ ]
+\ }
+
 "=========================================================
 "                         THEME
 " =========================================================

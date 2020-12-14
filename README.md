@@ -1,8 +1,11 @@
 # My dotfiles
 
-1. Clone this repo:
+### Template Repository
+This repo is meant to be used as a template, so don't fork it, just use the "Use this template" button.
 
-    ```$ git clone git@github.com:AwkwardKore/dotfiles.git```
+1. Clone your own repo:
+
+    ```$ git clone git@github.com:abrahamnm/dotfiles.git```
 
 2. Create a symlink for the files where you need them:
 

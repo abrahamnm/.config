@@ -60,8 +60,8 @@ Plug 'tpope/vim-fugitive'
 " Use ctrl p for fuzzy finder
 Plug 'kien/ctrlp.vim'
 
-" Vim material monokai theme
-Plug 'https://github.com/AwkwardKore/vim-material-monokai.git'
+" OneDark
+Plug 'joshdick/onedark.vim'
 
 " Change surrounding
 Plug 'tpope/vim-surround'
@@ -78,6 +78,9 @@ Plug 'easymotion/vim-easymotion'
 " Conquer of Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" WakaTime
+Plug 'wakatime/vim-wakatime'
+
 call plug#end()
 
 " =========================================================
@@ -87,11 +90,11 @@ call plug#end()
 " Set encoding to utf-8
 set encoding=utf-8
 
-" Change autoindentation to use spaces
-set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
-
 " Let vim-airline handle showing mode
 set noshowmode
+
+" Change autoindentation to use spaces
+set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 " Use 4 tab spaces when using .php extension
 au FileType php set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
@@ -172,6 +175,9 @@ autocmd BufReadPost *
 autocmd vimenter * NERDTree %:p:h
 autocmd VimEnter * wincmd p
 
+" Load NERDTree on the right
+let g:NERDTreeWinPos = "right"
+
 " Show hidden files on NERDTree
 let NERDTreeShowHidden=1
 
@@ -186,7 +192,7 @@ autocmd FileType nerdtree setlocal relativenumber
 let NERDTreeMinimalUI=1
 
 " Change NERDTree size
-let NERDTreeWinSize=35
+let NERDTreeWinSize=40
 
 " Map Ctrl-n to toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
@@ -199,7 +205,7 @@ let g:NERDTreeStatusline='NERDTree'
 " =========================================================
 
 " Disable caching
-let g:ctrlp_use_caching = 0
+" let g:ctrlp_use_caching = 0
 
 " Use silver searcher
 if executable('ag')
@@ -220,13 +226,24 @@ let g:ctrlp_abbrev = {
 \ }
 
 "=========================================================
+"                  EASYMOTION
+" =========================================================
+
+" EasyMotion shortcuts
+map <leader>2 <Plug>(easymotion-s2)
+map <leader>s <Plug>(easymotion-s)
+
+" EasyMotion SmartCase
+let g:EasyMotion_smartcase = 1
+
+"=========================================================
 "                         THEME
 " =========================================================
 
 " Configure theme to use material-monokai
-set background=dark
 set termguicolors
-colorscheme material-monokai
+syntax on
+colorscheme onedark
 
 "=========================================================
 "                   CUSTOM SHORTCUTS
@@ -244,9 +261,6 @@ nnoremap <leader>O O<Esc>
 " Get out of Insert Mode
 inoremap ii <Esc>l
 
-" EasyMotion shortcut
-nnoremap <leader>s <Plug>(easymotion-s2)
-
 " Clear highlights made by last search
 nnoremap <silent> <leader>c :noh<cr>
 
@@ -255,22 +269,21 @@ nnoremap <C-e> 4<C-e>
 nnoremap <C-y> 4<C-y>
 
 " Use space to Page Down/Up
-nnoremap <Space> <PageDown>
-nnoremap <S-Space> <PageUp>
+nnoremap <Space> <C-d>
 
 " Remap movement between splits for easier navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
 
 " Navigate between splits
 nnoremap <tab>   <c-w>w
 nnoremap <S-tab> <c-w>W
 
 " Comment out lines
-nnoremap <silent> <C-/> :Commentary<cr>
-xnoremap <silent> <C-/> :Commentary<cr>gv
+nnoremap <silent> <C-_> :Commentary<cr>
+xnoremap <silent> <C-_> :Commentary<cr>gv
 
 " Move lines Up/Down
 nnoremap <silent> <C-k> :move-2<cr>
@@ -346,4 +359,3 @@ nmap <leader>f  <Plug>(coc-format-selected)
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
-

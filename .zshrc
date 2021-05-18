@@ -7,14 +7,14 @@ export ZSH=~/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
 # looking in ~/.oh-my-zsh/themes/
 # An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -60,12 +60,16 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  vi-mode
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+export DEFAULT_USER=`id -un`
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -94,22 +98,18 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 alias vimconfig="vim ~/.vimrc"
 alias zshconfig="vim ~/.zshrc"
-alias gpvimconfig="(cd ~/dotfiles && git add .vimrc && git commit && git push origin master)"
-alias gfdotfiles="(cd ~/dotfiles && git pull origin master)"
 alias findswp="find . -type f -name '*.swp'"
 alias delswp="find . -type f -name '*.swp' -delete"
 
-# Terminal prompt
-PROMPT='%{$fg_bold[red]%}$USER%{$fg[cyan]%}@%{$fg_bold[blue]%}%m ${ret_status}%{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
-
-# Prompt for indicating vi-mode
-MODE_INDICATOR="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
 
 # Reduce delay between ESC key press and showing vi-mode
 export KEYTIMEOUT=1
 
 # Variables
-export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_HOME=/Volumes/ANM/Android
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -124,3 +124,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+

@@ -51,6 +51,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Use vim-airline for status bar
 Plug 'vim-airline/vim-airline'
 
+" Use vim-airline themes
+Plug 'vim-airline/vim-airline-themes'
+
 " Use gitgutter for git information on editor
 Plug 'airblade/vim-gitgutter'
 
@@ -154,6 +157,9 @@ set nostartofline
 set splitright
 set splitbelow
 
+" Hide buffers instead of closing them when moving between buffers
+set hidden
+
 " open help vertically
 command! -nargs=* -complete=help Help vertical belowright help <args>
 autocmd FileType help wincmd L
@@ -166,6 +172,35 @@ autocmd BufReadPost *
       \ if line("'\"") > 1 && line("'\"") <= line("$") |
       \	exe "normal! g`\"" |
       \ endif
+
+" =========================================================
+"                       AIRLINE
+" =========================================================
+
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_skip_empty_sections = 1
+let g:airline_theme = 'bubblegum'
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'c'  : 'C',
+    \ 'i'  : 'I',
+    \ 'ic' : 'I',
+    \ 'ix' : 'I',
+    \ 'n'  : 'N',
+    \ 'ni' : 'N',
+    \ 'no' : 'N',
+    \ 'R'  : 'R',
+    \ 'Rv' : 'R',
+    \ 's'  : 'S',
+    \ 'S'  : 'S',
+    \ '' : 'S',
+    \ 't'  : 'T',
+    \ 'v'  : 'V',
+    \ 'V'  : 'V',
+    \ '' : 'V',
+    \ }
 
 " =========================================================
 "                       NERDTREE
@@ -192,7 +227,7 @@ autocmd FileType nerdtree setlocal relativenumber
 let NERDTreeMinimalUI=1
 
 " Change NERDTree size
-let NERDTreeWinSize=40
+let NERDTreeWinSize=35
 
 " Map Ctrl-n to toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
@@ -272,16 +307,16 @@ nnoremap <C-y> 4<C-y>
 nnoremap <Space> <C-d>
 
 " Remap movement between splits for easier navigation
-" nnoremap <C-J> <C-W><C-J>
-" nnoremap <C-K> <C-W><C-K>
-" nnoremap <C-L> <C-W><C-L>
-" nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Navigate between splits
 nnoremap <tab>   <c-w>w
 nnoremap <S-tab> <c-w>W
 
-" Comment out lines
+" Comment out lines with Ctrl+/
 nnoremap <silent> <C-_> :Commentary<cr>
 xnoremap <silent> <C-_> :Commentary<cr>gv
 
@@ -296,8 +331,6 @@ nnoremap <silent> <C-h> <<
 nnoremap <silent> <C-l> >>
 xnoremap <silent> <C-h> <gv
 xnoremap <silent> <C-l> >gv
-xnoremap < <gv
-xnoremap > >gv
 
 "=========================================================
 "                CONQUER OF COMPLETION

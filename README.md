@@ -9,4 +9,4 @@ This repo is meant to be used as a template, so don't fork it, just use the "Use
 
 2. Create a symlink for the files where you need them:
 
-    ```$ ln -s {absolute_path_to_repo}/dotfiles/.vimrc {absolute_path_to_directory}/.vimrc```
+    ```$ ln -s {absolute_path_to_repo}/dotfiles/vim/.vimrc {absolute_path_to_directory}/.vimrc```

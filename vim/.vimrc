@@ -14,7 +14,7 @@
 "
 " Forked from AwkwardKore/dotfiles
 "
-" This file was created scratchig around the web to suit my needs and
+" This file was created scratching around the web to suit my needs and
 " preferences, you may want to change it to match yours.
 
 set nocompatible
@@ -63,14 +63,14 @@ Plug 'tpope/vim-fugitive'
 " Use ctrl p for fuzzy finder
 Plug 'kien/ctrlp.vim'
 
-" OneDark
+" OneDark Theme
 Plug 'joshdick/onedark.vim'
 
 " Change surrounding
 Plug 'tpope/vim-surround'
 
 " Comment lines
-Plug 'tpope/vim-commentary'
+Plug 'tomtom/tcomment_vim'
 
 " Vue syntax
 Plug 'posva/vim-vue'
@@ -84,6 +84,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " WakaTime
 Plug 'wakatime/vim-wakatime'
 
+" Indent lines
+Plug 'Yggdroot/indentLine'
+
+" Rainbow Parentheses
+Plug 'luochen1990/rainbow'
+
 call plug#end()
 
 " =========================================================
@@ -93,10 +99,15 @@ call plug#end()
 " Set encoding to utf-8
 set encoding=utf-8
 
+set spelllang=en_us,es
+
+" Update sign column every quarter second
+set updatetime=250
+
 " Let vim-airline handle showing mode
 set noshowmode
 
-" Change autoindentation to use spaces
+" Change auto indentation to use spaces
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 " Use 4 tab spaces when using .php extension
@@ -104,6 +115,11 @@ au FileType php set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 " Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
+
+" Don't Wrap on long lines and add visual marker for long lines
+set nowrap
+" You shall not pass from this column
+set colorcolumn=120
 
 " Add line numbers
 set number
@@ -117,7 +133,7 @@ set title
 " Display relative numbers instead of specific ones
 set relativenumber
 
-" Centralize backups, swapfiles and undo history
+" Centralize backups, swap files and undo history
 call system("mkdir -p $HOME/.vim/backups")
 call system("mkdir -p $HOME/.vim/swaps")
 set backupdir=~/.vim/backups
@@ -173,6 +189,13 @@ autocmd BufReadPost *
       \	exe "normal! g`\"" |
       \ endif
 
+" Add indentation guide lines and make them barely visible
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_color_gui = '#323740'
+
+" Enable rainbow parentheses
+let g:rainbow_active = 1
+
 " =========================================================
 "                       AIRLINE
 " =========================================================
@@ -207,8 +230,8 @@ let g:airline_mode_map = {
 " =========================================================
 
 " Load NERDTree on startup
-autocmd vimenter * NERDTree %:p:h
-autocmd VimEnter * wincmd p
+" autocmd vimenter * NERDTree %:p:h
+" autocmd VimEnter * wincmd p
 
 " Load NERDTree on the right
 let g:NERDTreeWinPos = "right"
@@ -261,17 +284,6 @@ let g:ctrlp_abbrev = {
 \ }
 
 "=========================================================
-"                  EASYMOTION
-" =========================================================
-
-" EasyMotion shortcuts
-map <leader>2 <Plug>(easymotion-s2)
-map <leader>s <Plug>(easymotion-s)
-
-" EasyMotion SmartCase
-let g:EasyMotion_smartcase = 1
-
-"=========================================================
 "                         THEME
 " =========================================================
 
@@ -288,6 +300,9 @@ let mapleader = ','
 
 " Write to file
 noremap <leader>w :w<cr>
+
+" Delete buffer
+noremap <silent> <leader>q :bd<cr>
 
 " Insert new line in normal mode
 nnoremap <leader>o o<Esc>
@@ -316,10 +331,6 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <tab>   <c-w>w
 nnoremap <S-tab> <c-w>W
 
-" Comment out lines with Ctrl+/
-nnoremap <silent> <C-_> :Commentary<cr>
-xnoremap <silent> <C-_> :Commentary<cr>gv
-
 " Move lines Up/Down
 nnoremap <silent> <C-k> :move-2<cr>
 nnoremap <silent> <C-j> :move+<cr>
@@ -331,6 +342,22 @@ nnoremap <silent> <C-h> <<
 nnoremap <silent> <C-l> >>
 xnoremap <silent> <C-h> <gv
 xnoremap <silent> <C-l> >gv
+
+" Git related
+nnoremap <silent> <leader>g :G<cr>
+nnoremap <silent> <leader>gf :diffget //2<cr>
+nnoremap <silent> <leader>gj :diffget //3<cr>
+
+"=========================================================
+"                  EASYMOTION
+" =========================================================
+
+" EasyMotion shortcuts
+map <leader>2 <Plug>(easymotion-s2)
+map <leader>s <Plug>(easymotion-s)
+
+" EasyMotion SmartCase
+let g:EasyMotion_smartcase = 1
 
 "=========================================================
 "                CONQUER OF COMPLETION

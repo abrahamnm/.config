@@ -102,7 +102,7 @@ set encoding=utf-8
 set spelllang=en_us,es
 
 " Update sign column every quarter second
-set updatetime=250
+set updatetime=100
 
 " Let vim-airline handle showing mode
 set noshowmode
@@ -113,13 +113,16 @@ set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 " Use 4 tab spaces when using .php extension
 au FileType php set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
+au FileType vue set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+
 " Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
 " Don't Wrap on long lines and add visual marker for long lines
 set nowrap
+
 " You shall not pass from this column
-set colorcolumn=120
+set colorcolumn=80
 
 " Add line numbers
 set number
@@ -175,6 +178,9 @@ set splitbelow
 
 " Hide buffers instead of closing them when moving between buffers
 set hidden
+
+" Save buffers ?
+set confirm
 
 " open help vertically
 command! -nargs=* -complete=help Help vertical belowright help <args>
@@ -342,6 +348,9 @@ nnoremap <silent> <C-h> <<
 nnoremap <silent> <C-l> >>
 xnoremap <silent> <C-h> <gv
 xnoremap <silent> <C-l> >gv
+
+" Find file in NERDTree
+nnoremap <silent> <leader>ff :NERDTreeFind<CR>
 
 " Git related
 nnoremap <silent> <leader>g :G<cr>

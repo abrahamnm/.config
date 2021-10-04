@@ -108,8 +108,13 @@ bindkey '^e' edit-command-line
 # Reduce delay between ESC key press and showing vi-mode
 export KEYTIMEOUT=1
 
+#Add homestead function for issuing vagrant commands from anywhere
+function homestead() {
+    ( cd ~/Homestead && vagrant $* )
+}
+
 # Variables
-export ANDROID_HOME=/Volumes/ANM/Android
+export ANDROID_HOME=~/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -124,4 +129,3 @@ export NVM_DIR="$HOME/.nvm"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-

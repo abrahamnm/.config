@@ -1,0 +1,31 @@
+# Aliases
+alias vimrc="vim ~/.vimrc"
+alias zshrc="vim ~/.zshrc"
+alias aliasrc="vim ~/dotfiles/.alias"
+alias findswp="find . -type f -name '*.swp'"
+alias delswp="find . -type f -name '*.swp' -delete"
+alias update="source ~/.zshrc"
+alias md="mkdir"
+alias glog="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches"
+alias ll="exa -l --icons --group-directories-first"
+alias ls="exa -l --icons --group-directories-first"
+alias start-binnacle="~/start-binnacle"
+alias stop-binnacle="~/stop-binnacle"
+
+# Git
+alias ga='git add'
+alias gc='git commit -v'
+alias gcmsg='git commit -m'
+alias gco='git checkout'
+alias gcm='git checkout master'
+alias gcd='git checkout develop'
+alias gcp='git cherry-pick'
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gp='git push'
+alias gm='git merge'
+alias gl='git pull'
+alias gst='git status'
+
+# Substitutions
+alias vim="nvim"

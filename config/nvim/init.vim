@@ -13,11 +13,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Use gitgutter for git information on editor
 Plug 'airblade/vim-gitgutter'
-" Git insise vim
+" Git inside vim
 Plug 'tpope/vim-fugitive'
 " Lua Functions (Required for Telescope)
 Plug 'nvim-lua/plenary.nvim'
-" Harpoon
+" Harpoon (?)
 Plug 'ThePrimeagen/harpoon'
 " Telescope FuzzyFinder
 Plug 'nvim-telescope/telescope.nvim'
@@ -41,6 +41,21 @@ Plug 'Yggdroot/indentLine'
 " Material theme
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 
+" Native LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+" Syntax Hightlightning
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Code completion
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'onsails/lspkind.nvim'
+
 call plug#end()
 
 " Open help vertically
@@ -59,14 +74,14 @@ autocmd BufReadPost *
 " Add indentation guide lines and make them barely visible
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_color_gui = '#28353B'
-" Powerline settings
+" Enable Powerline fonts in Airline
 let g:airline_powerline_fonts = 1
 " Enable buffer line
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 " Disable encode show
 let g:airline_section_y = ''
-let g:airline#extensions#branch#format = 2 " Skip feature/hotfix/etc
+let g:airline#extensions#branch#format = 2 " Transform feature/new_feature to f/new_feature
 let g:airline_skip_empty_sections = 1
 let g:airline_theme = 'hybrid'
   let g:airline#extensions#tabline#buffer_min_count = 0

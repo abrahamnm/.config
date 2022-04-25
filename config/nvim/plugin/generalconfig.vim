@@ -1,4 +1,5 @@
 colorscheme material
+syntax on
 set backspace=indent,eol,start
 set confirm
 set cursorline

@@ -15,24 +15,24 @@ nmap <leader><tab> <Plug>AirlineSelectNextTab
 nmap <leader><S-tab> <Plug>AirlineSelectPrevTab
 
 " Write to file
-noremap <leader>w :w<cr>
+noremap <leader>w <cmd>w<cr>
 " Close (Delete) buffer
-noremap <silent> <leader>q :bd<cr>
+noremap <leader>q <cmd>bd<cr>
 " Insert new line in normal mode
 nnoremap <leader>o o<Esc>
 nnoremap <leader>O O<Esc>
 " Get out of Insert Mode
 inoremap ii <Esc>l
 " Clear highlights made by last search
-nnoremap <silent> <leader>c :noh<cr>
+nnoremap <leader>c <cmd>noh<cr>
 " Navigate between splits
 nnoremap <tab>   <c-w>w
 nnoremap <S-tab> <c-w>W
 " Move lines Up/Down
-nnoremap <silent> <C-k> :move-2<cr>
-nnoremap <silent> <C-j> :move+<cr>
-xnoremap <silent> <C-k> :move-2<cr>gv
-xnoremap <silent> <C-j> :move'>+<cr>gv
+nnoremap <C-k> <cmd>move-2<cr>
+nnoremap <C-j> <cmd>move+<cr>
+xnoremap <C-k> <cmd>move-2<cr>gv
+xnoremap <C-j> <cmd>move'>+<cr>gv
 " Indent/Unindent lines
 nnoremap <silent> <C-h> <<
 nnoremap <silent> <C-l> >>
